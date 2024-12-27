@@ -1,0 +1,17 @@
+{
+	"ext_name": {
+		"message": "Classic VK Feed — old posting and the old VK feed"
+	},
+	"ext_description": {
+		"message": "Returns the old posting interface and old feed. Created by VK Next team."
+	},
+	"popup_title": {
+		"message": "Classic VK Feed"
+	},
+	"popup_donate": {
+		"message": "Support the project"
+	},
+	"popup_feedback": {
+		"message": "Report an issue"
+	}
+}
