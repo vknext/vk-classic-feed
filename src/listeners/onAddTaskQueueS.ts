@@ -10,19 +10,19 @@ const interaction = new InteractionListener<CallbackFunc>();
 const getTqs = async () => {
 	const head = await waitHTMLHead();
 
-	if (!head._tqs) {
+	if (!head._cvf_tqs) {
 		await delay(1000);
 		return getTqs();
 	}
 
-	return head._tqs;
+	return head._cvf_tqs;
 };
 
 const initHeadHook = async () => {
 	const tqs = await getTqs();
 
-	if (tqs._vkns) return;
-	tqs._vkns = true;
+	if (tqs._cvf_tqs) return;
+	tqs._cvf_tqs = true;
 
 	for (const callback of interaction.listeners) {
 		try {

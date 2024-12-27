@@ -4,7 +4,7 @@ export interface HTMLHeadTaskQueueS {
 }
 
 interface ExtendedHTMLHeadElement extends HTMLHeadElement {
-	_tqs?: HTMLHeadTaskQueueS;
+	_cvf_tqs?: HTMLHeadTaskQueueS;
 }
 
 let savePromise: Promise<ExtendedHTMLHeadElement> | null = null;
