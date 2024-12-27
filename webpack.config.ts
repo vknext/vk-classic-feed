@@ -31,7 +31,7 @@ const IS_FIREFOX = Boolean(argv.firefox);
 
 const BUILD_PATH = IS_FIREFOX ? path.resolve(`./build/firefox`) : path.resolve(`./build/chrome`);
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4029;
 
 const manifest = getManifest({ isFirefox: IS_FIREFOX, isDev: IS_DEV });
 

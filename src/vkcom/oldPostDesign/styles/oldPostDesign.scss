@@ -1,0 +1,193 @@
+/* старый дизайн реакций */
+.PostBottomActionLikeBtns--withTransparentButtons.like_cont {
+	box-shadow: none !important;
+	padding: var(--like-cont-top-padding) 0 var(--like-cont-bottom-padding) !important;
+}
+
+.post--withPostBottomAction .PostBottomActionLikeBtns--withTransparentButtons .like_btns {
+	--post-bottom-action-post-left-side-distance: 16px !important;
+	margin-left: calc(var(--post-bottom-action-post-left-side-distance) - var(--post-padding-lr)) !important;
+}
+
+[dir='rtl'] .post--withPostBottomAction .PostBottomActionLikeBtns--withTransparentButtons .like_btns {
+	margin-left: 0 !important;
+	margin-right: calc(var(--post-bottom-action-post-left-side-distance) - var(--post-padding-lr)) !important;
+}
+
+.wl_post .PostBottomActionLikeBtns--withTransparentButtons .like_btns {
+	--post-bottom-action-post-left-side-distance: 20px !important;
+}
+
+.PostBottomActionLikeBtns--withTransparentButtons .like_btns > .PostBottomAction:not(:first-child),
+.PostBottomActionLikeBtns--withTransparentButtons .like_btns > .PostBottomActionContainer:not(:first-child) {
+	margin-left: 8px !important;
+}
+
+[dir='rtl'] .PostBottomActionLikeBtns--withTransparentButtons .like_btns > .PostBottomAction:not(:first-child),
+[dir='rtl']
+	.PostBottomActionLikeBtns--withTransparentButtons
+	.like_btns
+	> .PostBottomActionContainer:not(:first-child) {
+	margin-left: 0 !important;
+	margin-right: 8px !important;
+}
+
+.PostBottomAction--transparent {
+	--post-bottom-action-background-color: var(--vkui--color_background_secondary) !important;
+	padding: 4px 12px !important;
+	background-color: var(--post-bottom-action-background-color) !important;
+	border-radius: 32px !important;
+}
+
+.PostBottomAction--transparent::before {
+	content: '' !important;
+	display: block !important;
+	position: absolute !important;
+	left: 0 !important;
+	top: 0 !important;
+	height: 100% !important;
+	width: 100% !important;
+	border-radius: inherit !important;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(rgba(0, 0, 0, 0.02)),
+		to(rgba(0, 0, 0, 0.02))
+	) !important;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02)) !important;
+	opacity: 0 !important;
+	transition: opacity 100ms ease-in-out !important;
+}
+
+[dir='rtl'] .PostBottomAction--transparent::before {
+	left: auto !important;
+	right: 0 !important;
+}
+
+[scheme='vkcom_dark'] .PostBottomAction--transparent::before {
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(rgba(255, 255, 255, 0.02)),
+		to(rgba(255, 255, 255, 0.02))
+	) !important;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)) !important;
+}
+
+.PostBottomAction--transparent:focus::before,
+.PostBottomAction--transparent:hover::before {
+	opacity: 1 !important;
+}
+
+.PostBottomAction--transparent:active::before {
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(rgba(0, 0, 0, 0.03)),
+		to(rgba(0, 0, 0, 0.03))
+	) !important;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.03)) !important;
+	opacity: 1 !important;
+}
+
+[scheme='vkcom_dark'] .PostBottomAction--transparent:active::before {
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(rgba(255, 255, 255, 0.03)),
+		to(rgba(255, 255, 255, 0.03))
+	) !important;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)) !important;
+}
+
+.PostBottomAction--transparent .PostBottomAction__icon {
+	color: var(--vkui--vkontakte_color_icon_outline_secondary) !important;
+}
+
+.Post--redesign .PostBottomAction--transparent .PostBottomAction__icon {
+	color: var(--vkui--vkontakte_color_icon_outline_medium) !important;
+}
+
+.Post--redesignV3 .wl_post_actions_wrap,
+.post_info .like_wrap {
+	--post-padding-lr: 12px;
+}
+
+.PostBottomAction--transparent .PostBottomAction__icon,
+.PostBottomAction--transparent .PostBottomAction__label,
+.PostBottomAction--transparent .PostBottomAction__count {
+	opacity: 1 !important;
+}
+
+/* острова */
+.feed_wall--no-islands:not(.feed_notifications) {
+	background: none !important;
+	border-radius: unset !important;
+	box-shadow: none !important;
+	margin: unset !important;
+
+	.page_block,
+	.page_block.post,
+	.wall_module .page_wall_posts .page_block ~ .page_block,
+	.wall_module .page_wall_posts .page_block:not(.unshown) ~ .page_block.unshown + .page_block:not(.unshown),
+	[class*='RecommendationBlock__blockWrap'] {
+		background: var(--vkui--color_background_content) !important;
+		border-radius: var(--vkui--size_border_radius_paper--regular) !important;
+		box-shadow: var(--page-block-shadow) !important;
+		margin: 16px 0 0 !important;
+	}
+
+	.post_info .replies {
+		padding-bottom: 0 !important;
+	}
+}
+
+.feed_wall--no-islands .post_info .replies {
+	padding-bottom: 0 !important;
+}
+
+/* остров для историй */
+[class*='StoryBlock__noIslandsContainer'] {
+	box-shadow: var(--page-block-shadow) !important;
+	background: var(--vkui--color_background_content) !important;
+	border-radius: var(--vkui--size_border_radius_paper--regular) !important;
+	margin: 16px 0 0 !important;
+	padding: 12px !important;
+}
+
+.PostDateBlock__root:not(.ReactEntryRootClone)[style='display: none;'] {
+	display: block !important;
+}
+
+.PostDateBlock__root:empty {
+	display: none !important;
+}
+
+.PostHeader--hasSubtitle {
+	display: block;
+
+	.PostDateBlock__root:not(:empty),
+	.PostHeaderSubtitle {
+		display: inline-flex !important;
+	}
+
+	.PostHeaderSubtitle + .PostDateBlock__root:not(:empty)::before {
+		content: '·';
+		color: var(--vkui--color_text_secondary);
+		margin-right: 3px;
+		margin-left: 1px;
+	}
+}
+
+.PostContentContainer__root .vkuiDiv:has(.vkuiDiv:first-child:empty) {
+	display: none;
+}
+
+.Post--redesignFooterV3 #wpe_cont {
+	padding: 0px 20px;
+	margin-top: 20px;
+}
