@@ -2,6 +2,7 @@
 
 interface VKNext {
 	cvf_installed?: boolean;
+	webpack: Record<string, any>;
 }
 
 interface navGoLoc {
@@ -41,8 +42,14 @@ export interface VK {
 	pe: Record<string, any>;
 }
 
+export interface Feed {
+	init: (state: unknown) => unknown;
+}
+
 declare global {
 	var browser: typeof globalThis.chrome;
+
+	var Feed: Feed;
 
 	var vknext: VKNext;
 	var nav: Nav;
