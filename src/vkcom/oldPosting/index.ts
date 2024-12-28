@@ -9,6 +9,8 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallI
 	const newPageBlockSubmitPost = document.querySelector<HTMLElement>('#page_block_submit_post.new_posting');
 	const mainFeed = document.getElementById('main_feed');
 
+	if (document.getElementsByClassName('submit_post_field').length) return;
+
 	if (!mainFeed && !newPageBlockSubmitPost) return;
 
 	const [ownerId, ownerPhoto, ownerHref, ownerName] = wall_tpl?.ownerData || [];
@@ -82,11 +84,14 @@ const initOldPosting = async () => {
 	if (inited) return;
 	inited = true;
 
-	// форсим редактирование поста через window.Wall.edit
 	onChangeVKPart(() => {
 		if (!window.vk?.pe) return;
 
+		// форсим редактирование поста через window.Wall.edit
 		delete window.vk.pe.posting_web_react_form;
+
+		// возвращаем источник
+		delete window.vk.pe.posting_hide_copyright_button_web;
 	});
 
 	const wall = await awaitWall();

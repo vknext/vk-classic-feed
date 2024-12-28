@@ -1,4 +1,5 @@
 import createPostCopyrightButton from './createPostCopyrightButton';
+import createPostSourceButton from './createPostSourceButton';
 
 const createPostSettingsItems = (isGroup: boolean) => {
 	const postSettingsItems = document.createElement('div');
@@ -27,7 +28,7 @@ const createPostSettingsItems = (isGroup: boolean) => {
 	muteNotifications.textContent = 'Не отправлять уведомления';
 	postSettingsItems.appendChild(muteNotifications);
 
-	postSettingsItems.appendChild(createPostCopyrightButton());
+	postSettingsItems.append(createPostCopyrightButton(), createPostSourceButton());
 
 	return postSettingsItems;
 };

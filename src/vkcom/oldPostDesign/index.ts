@@ -26,12 +26,18 @@ const onAddPost = (post: HTMLElement) => {
 	const postHeaderInfo = post.querySelector<HTMLElement>('.PostHeaderInfo');
 	if (!postHeaderInfo) return;
 
+	const subtitle = post.querySelector<HTMLElement>('.PostHeaderSubtitle');
+
 	for (const postDateBlock of post.querySelectorAll<HTMLElement>('.PostDateBlock__root:not(.ReactEntryRootClone)')) {
 		if (postDateBlock.style.display === 'none') {
 			postDateBlock.style.display = '';
 		}
 
-		postHeaderInfo.appendChild(postDateBlock);
+		if (subtitle) {
+			subtitle.insertAdjacentElement('afterend', postDateBlock);
+		} else {
+			postHeaderInfo.appendChild(postDateBlock);
+		}
 
 		const postBottomActionLikeBtns = post.querySelector<HTMLElement>('.like_cont,.PostBottomActionLikeBtns');
 		if (!postBottomActionLikeBtns) return;

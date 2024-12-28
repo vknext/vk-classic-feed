@@ -178,8 +178,7 @@
 	.PostHeaderSubtitle + .PostDateBlock__root:not(:empty)::before {
 		content: '·';
 		color: var(--vkui--color_text_secondary);
-		margin-right: 3px;
-		margin-left: 1px;
+		margin: 0 3px;
 	}
 }
 

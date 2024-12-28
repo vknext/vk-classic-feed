@@ -1,5 +1,5 @@
-import advertising_check_outline_24 from '@vkontakte/icons/src/svg/24/advertising_check_outline_24.svg';
-import advertising_outline_24 from '@vkontakte/icons/src/svg/24/advertising_outline_24.svg';
+import advertising_check_outline_20 from '@vkontakte/icons/src/svg/20/advertising_check_outline_20.svg';
+import advertising_outline_20 from '@vkontakte/icons/src/svg/20/advertising_outline_20.svg';
 import createPostCopyrightButtonIcon from './createPostCopyrightButtonIcon';
 
 const createPostCopyrightButton = () => {
@@ -18,11 +18,11 @@ const createPostCopyrightButton = () => {
 	erid.name = 'erid';
 	postCopyrightButton.appendChild(erid);
 
-	const postCopyrightButtonIconWithoutAds = createPostCopyrightButtonIcon(advertising_outline_24);
+	const postCopyrightButtonIconWithoutAds = createPostCopyrightButtonIcon(advertising_outline_20);
 	postCopyrightButtonIconWithoutAds.classList.add('withoutAds');
 	postCopyrightButton.appendChild(postCopyrightButtonIconWithoutAds);
 
-	const postCopyrightButtonIconWithAds = createPostCopyrightButtonIcon(advertising_check_outline_24);
+	const postCopyrightButtonIconWithAds = createPostCopyrightButtonIcon(advertising_check_outline_20);
 	postCopyrightButtonIconWithAds.classList.add('withAds');
 	postCopyrightButton.appendChild(postCopyrightButtonIconWithAds);
 
