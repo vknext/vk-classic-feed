@@ -48,6 +48,35 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallI
 	}
 };
 
+const showErrorInject = (mainFeed?: HTMLElement | null) => {
+	if (window.Notifier?.showEvent) {
+		const text = [
+			mainFeed
+				? 'Не удалось внедрить старый постинг. Перезайдите в раздел для повторной попытки.'
+				: 'Не удалось внедрить старый постинг. Перезагружаем раздел для повторной попытки...',
+		];
+
+		const oldPostingNotifyCount = parseInt(localStorage.getItem('oldPostingNotifyCountVCF') || '0') || 0;
+		if (oldPostingNotifyCount > 2) {
+			return;
+		}
+
+		if (oldPostingNotifyCount === 2) {
+			text.push(
+				'<br/><br/>',
+				'Это уведомление больше не появится. Пожалуйста, запомните, что расширение иногда будет перезагружать разделы для внедрения старого постинга.'
+			);
+		}
+
+		window.Notifier.showEvent({
+			title: 'VK Classic Feed',
+			text: text.join('\n'),
+		});
+
+		localStorage.setItem('oldPostingNotifyCountVCF', (oldPostingNotifyCount + 1).toString());
+	}
+};
+
 let inited = false;
 const initOldPosting = async () => {
 	if (inited) return;
@@ -83,32 +112,7 @@ const initOldPosting = async () => {
 		const mainFeed = document.getElementById('main_feed');
 
 		try {
-			if (window.Notifier?.showEvent) {
-				const text = [
-					mainFeed
-						? 'Не удалось внедрить старый постинг. Перезайдите в раздел для повторной попытки.'
-						: 'Не удалось внедрить старый постинг. Перезагружаем раздел для повторной попытки...',
-				];
-
-				const oldPostingNotifyCount = parseInt(localStorage.getItem('oldPostingNotifyCountVCF') || '0') || 0;
-				if (oldPostingNotifyCount > 2) {
-					return;
-				}
-
-				if (oldPostingNotifyCount === 2) {
-					text.push(
-						'<br/><br/>',
-						'Это уведомление больше не появится. Пожалуйста, запомните, что расширение иногда будет перезагружать разделы для внедрения старого постинга.'
-					);
-				}
-
-				window.Notifier.showEvent({
-					title: 'VK Classic Feed',
-					text: text.join('\n'),
-				});
-
-				localStorage.setItem('oldPostingNotifyCountVCF', (oldPostingNotifyCount + 1).toString());
-			}
+			showErrorInject(mainFeed);
 		} catch (e) {
 			console.error(e);
 		}
