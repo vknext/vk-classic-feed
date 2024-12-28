@@ -46,6 +46,43 @@ export interface Feed {
 	init: (state: unknown) => unknown;
 }
 
+export interface WallInitProps {
+	wall_oid?: number;
+	public_link?: string;
+	loc?: string;
+	owner?: {
+		id: number;
+		name: string;
+		photo: string;
+	};
+	wall_tpl: {
+		profileData: [profileId: number, photo: string, href: string, name: string];
+		ownerData: [ownerId: number, photo: string, href: string, name: string];
+	};
+}
+
+export interface Wall {
+	init: (props: WallInitProps) => void;
+	votingUpdateFull: (_: string, e: string) => void;
+	initReplyEditable: (replyBox: HTMLElement, replyField: HTMLElement, postId: string) => void;
+	showEditReply: (
+		postId: string,
+		e?: unknown,
+		o?: boolean,
+		i?: boolean,
+		focus?: boolean,
+		onInited?: () => void
+	) => void;
+}
+
+export interface stManager {
+	add(statics: string | string[]): Promise<void>;
+}
+
+export interface Notifier {
+	showEvent: (props: { title?: string; text?: string }) => void;
+}
+
 declare global {
 	var browser: typeof globalThis.chrome;
 
@@ -60,6 +97,11 @@ declare global {
 	var removeEvent: (elem: HTMLElement, event: string) => void;
 	var Video: Record<string, any>;
 	var vk: VK;
+	var Wall: Wall;
+	var templates: Record<string, string>;
+	var stManager: stManager;
+	var jsc: (module: string) => string;
+	var Notifier: Notifier;
 
 	var getLang: (key: string, type?: string | number) => string;
 	var langDate: (timestamp: number, text: string, mode?: string | number, months?: string | string[]) => string;

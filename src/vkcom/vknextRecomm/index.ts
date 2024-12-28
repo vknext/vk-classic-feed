@@ -1,4 +1,4 @@
-import waitGlobalVariable from 'src/lib/waitGlobalVariable';
+import waitFeed from 'src/globalVars/waitFeed';
 
 const onLoadFeed = () => {
 	if (window.vknext?.webpack) return;
@@ -37,7 +37,7 @@ const initVKNextRecomm = async () => {
 		console.error(e);
 	}
 
-	const feed = await waitGlobalVariable('Feed');
+	const feed = await waitFeed();
 
 	const init = feed.init;
 

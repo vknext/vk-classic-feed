@@ -1,6 +1,6 @@
 {
 	"name": "vk-classic-feed",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "cross-env NODE_OPTIONS=\"--import=tsx/esm\" webpack serve --config webpack.config.ts --env --dev",
@@ -43,5 +43,7 @@
 		"webpack-utf8-bom": "^1.4.0",
 		"yargs-parser": "^21.1.1"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@vkontakte/icons": "^2.160.0"
+	}
 }
