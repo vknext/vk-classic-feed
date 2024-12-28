@@ -18,6 +18,9 @@ const FEED_ROWS_SELECTOR = ['#feed_rows', '._feed_rows'].join(',');
 const interaction = new InteractionListener<CallbackFunc>();
 
 const onCallback = async (el: HTMLElement) => {
+	// элемент удалили из дома, например при переходе в другой раздел
+	if (!el.closest('html,body')) return;
+
 	if (el.getElementsByClassName('PostContentDumbSkeleton').length) {
 		await delay(500);
 		return onCallback(el);
