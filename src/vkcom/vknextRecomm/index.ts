@@ -1,7 +1,8 @@
+import getGlobalVKNext from 'src/getGlobalVKNext';
 import waitFeed from 'src/globalVars/waitFeed';
 
 const onLoadFeed = () => {
-	if (window.vknext?.webpack) return;
+	if (getGlobalVKNext()?.webpack) return;
 
 	const rmenu = document.getElementById('feed_rmenu');
 	if (!rmenu) return;
@@ -29,7 +30,7 @@ const onLoadFeed = () => {
 };
 
 const initVKNextRecomm = async () => {
-	if (window.vknext?.webpack) return;
+	if (getGlobalVKNext()?.webpack) return;
 
 	try {
 		onLoadFeed();

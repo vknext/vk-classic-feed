@@ -2,7 +2,7 @@
 
 interface VKNext {
 	vcf_installed?: boolean;
-	webpack: Record<string, any>;
+	webpack?: Record<string, any>;
 }
 
 interface navGoLoc {
