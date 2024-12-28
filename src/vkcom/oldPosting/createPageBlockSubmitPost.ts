@@ -3,6 +3,7 @@ import createAddPostButtonWrap from './createAddPostButtonWrap';
 import createAvatarRich from './createAvatarRich';
 import createMediaInfo from './createMediaInfo';
 import createMediaPreview from './createMediaPreview';
+import createOptionCheckSignPic from './createOptionCheckSignPic';
 import createPostActionsBtns from './createPostActionsBtns';
 import createPostButtonGearSettings from './createPostButtonGearSettings';
 import createPostFieldWrap from './createPostFieldWrap';
@@ -15,6 +16,7 @@ interface Options {
 	ownerName?: string;
 	ownerPhoto?: string;
 	ownerHref?: string;
+	isSuggestPost: boolean;
 }
 
 const createSubmitPostBox = ({
@@ -62,17 +64,21 @@ const createPostFieldUserLink = ({ ownerHref = '', ownerPhoto = '' }: Pick<Optio
 	return postFieldUserLink;
 };
 
-const createPostSettings = (isGroup: boolean) => {
+const createPostSettings = (isGroup: boolean, isSuggestPost: boolean) => {
 	const postSettings = document.createElement('div');
 	postSettings.className = 'post_settings PostSettings';
 	postSettings.id = 'post_settings_btn';
 
-	postSettings.append(createPostButtonGearSettings(), createPostSettingsItems(isGroup));
+	if (!isSuggestPost) {
+		postSettings.appendChild(createPostButtonGearSettings());
+	}
+
+	postSettings.appendChild(createPostSettingsItems(isGroup));
 
 	return postSettings;
 };
 
-const createSubmitPost = (isGroup: boolean) => {
+const createSubmitPost = (isGroup: boolean, isSuggestPost: boolean) => {
 	const submitPost = document.createElement('div');
 	submitPost.id = 'submit_post';
 	submitPost.className = 'submit_post clear_fix';
@@ -81,7 +87,11 @@ const createSubmitPost = (isGroup: boolean) => {
 		"if(domClosest('article_snippet', event.target)) return;event.cancelBubble=true;"
 	);
 
-	submitPost.append(createAddPostButtonWrap(), createPostSettings(isGroup));
+	submitPost.append(createAddPostButtonWrap(isSuggestPost), createPostSettings(isGroup, isSuggestPost));
+
+	if (isSuggestPost) {
+		submitPost.appendChild(createOptionCheckSignPic());
+	}
 
 	const pageAddMedia = document.createElement('div');
 	pageAddMedia.id = 'page_add_media';
@@ -92,7 +102,14 @@ const createSubmitPost = (isGroup: boolean) => {
 	return submitPost;
 };
 
-const createPageBlockSubmitPost = ({ oid, fromOid, ownerName, ownerPhoto, ownerHref }: Options): HTMLElement => {
+const createPageBlockSubmitPost = ({
+	oid,
+	fromOid,
+	ownerName,
+	ownerPhoto,
+	ownerHref,
+	isSuggestPost,
+}: Options): HTMLElement => {
 	const isUser = Ranges.isUserId(oid);
 
 	const pageBlock = document.createElement('div');
@@ -114,11 +131,11 @@ const createPageBlockSubmitPost = ({ oid, fromOid, ownerName, ownerPhoto, ownerH
 	submitPostBox.append(
 		createSubmitPostError(),
 		createPostFieldUserLink({ ownerHref, ownerPhoto }),
-		createPostFieldWrap(),
+		createPostFieldWrap(isSuggestPost),
 		createMediaPreview(),
 		createMediaInfo(),
 		createPostActionsBtns(isUser),
-		createSubmitPost(!isUser)
+		createSubmitPost(!isUser, isSuggestPost)
 	);
 
 	pageBlock.appendChild(submitPostBox);

@@ -1,5 +1,5 @@
 const formatPostDate = (timestamp: number = 0, useFullMonthName: boolean = false) => {
-	if (!timestamp) return '';
+	if (!timestamp || !window.getLang) return '';
 
 	const ONE_HOUR_SECONDS = 3600;
 	const ONE_SECOND_MS = 1000;

@@ -103,7 +103,7 @@ declare global {
 	var jsc: (module: string) => string;
 	var Notifier: Notifier;
 
-	var getLang: (key: string, type?: string | number) => string;
+	var getLang: null | ((key: string, type?: string | number) => string);
 	var langDate: (timestamp: number, text: string, mode?: string | number, months?: string | string[]) => string;
 	var langNumeric: (n: number, s: string | string[]) => string;
 

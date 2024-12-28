@@ -11,7 +11,8 @@ const createPostSourceButton = () => {
 
 	const postCopyrightButtonText = document.createElement('span');
 	postCopyrightButtonText.className = 'Post__copyrightButtonText';
-	postCopyrightButtonText.textContent = window.getLang('wall_post_copyright_add_button');
+	postCopyrightButtonText.textContent = window.getLang?.('wall_post_copyright_add_button') || 'Указать источник';
+
 	postCopyrightButton.appendChild(postCopyrightButtonText);
 
 	return postCopyrightButton;

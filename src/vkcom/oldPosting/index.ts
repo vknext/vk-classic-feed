@@ -26,6 +26,7 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallI
 	}
 
 	const submitPostBlock = createPageBlockSubmitPost({
+		isSuggestPost: wall_oid !== (ownerId || profileId),
 		oid: wall_oid || ownerId || profileId,
 		fromOid: wall_oid || ownerId || profileId,
 		ownerHref: ownerHref || public_link || loc || (owner?.id ? `id${owner.id}` : undefined) || profileHref,
