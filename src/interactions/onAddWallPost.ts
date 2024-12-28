@@ -30,7 +30,7 @@ const onCallback = async (el: HTMLElement) => {
 };
 
 const onAddPost = (el: ObservedHTMLElement) => {
-	if (el._cvf_ibs) return;
+	if (el._vcf_ibs) return;
 
 	const postContentContainer = el.querySelector<HTMLElement>('.PostContentContainer__root:not(.ReactEntryRootClone)');
 
@@ -39,16 +39,16 @@ const onAddPost = (el: ObservedHTMLElement) => {
 		return;
 	}
 
-	el._cvf_ibs = new IntersectionObserver(
+	el._vcf_ibs = new IntersectionObserver(
 		async (entries) => {
 			for (const entry of entries) {
 				if (entry.isIntersecting) {
 					onCallback(el);
 
-					if (el._cvf_ibs) {
-						el._cvf_ibs.unobserve(el);
+					if (el._vcf_ibs) {
+						el._vcf_ibs.unobserve(el);
 
-						delete el._cvf_ibs;
+						delete el._vcf_ibs;
 					}
 				}
 			}
@@ -56,7 +56,7 @@ const onAddPost = (el: ObservedHTMLElement) => {
 		{ threshold: 0, rootMargin: '100% 0% 100% 0%' }
 	);
 
-	el._cvf_ibs.observe(el);
+	el._vcf_ibs.observe(el);
 };
 
 const getDocumentPosts = async () => {
@@ -93,9 +93,9 @@ const initObserver = async () => {
 		if (feedRows) {
 			if (feedRows.closest('.feed_wall--no-islands')) continue;
 
-			if (feedRows._cvf_mbs) continue;
+			if (feedRows._vcf_mbs) continue;
 
-			feedRows._cvf_mbs = new MutationObserver(async (mutations) => {
+			feedRows._vcf_mbs = new MutationObserver(async (mutations) => {
 				for (const mutation of mutations) {
 					if (!mutation.addedNodes.length) continue;
 
@@ -110,7 +110,7 @@ const initObserver = async () => {
 				}
 			});
 
-			feedRows._cvf_mbs.observe(feedRows, {
+			feedRows._vcf_mbs.observe(feedRows, {
 				childList: true,
 			});
 		}
@@ -119,11 +119,11 @@ const initObserver = async () => {
 	const pageWallPosts = document.querySelectorAll<ObservedHTMLElement>(PAGE_WALL_POSTS_SELECTOR);
 
 	for (const wrapper of pageWallPosts) {
-		if (wrapper._cvf_mbs) continue;
+		if (wrapper._vcf_mbs) continue;
 
 		await waitRIC();
 
-		wrapper._cvf_mbs = new MutationObserver(async (mutations) => {
+		wrapper._vcf_mbs = new MutationObserver(async (mutations) => {
 			for (const mutation of mutations) {
 				if (!mutation.addedNodes.length) continue;
 
@@ -135,7 +135,7 @@ const initObserver = async () => {
 			}
 		});
 
-		wrapper._cvf_mbs.observe(wrapper, {
+		wrapper._vcf_mbs.observe(wrapper, {
 			childList: true,
 		});
 	}

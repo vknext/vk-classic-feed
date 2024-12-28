@@ -71,7 +71,7 @@ const initOldPostDesign = () => {
 	onAddWallPost(onAddPost);
 	onAddModalPost(onAddPost);
 
-	document.documentElement.classList.add(styles.oldPostDesignCvf);
+	document.documentElement.classList.add(styles.oldPostDesign);
 };
 
 try {

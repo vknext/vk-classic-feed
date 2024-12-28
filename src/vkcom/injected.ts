@@ -1,4 +1,4 @@
-(window.vknext = window.vknext || {}).cvf_installed = true;
+(window.vknext = window.vknext || {}).vcf_installed = true;
 
 import './oldPostDesign';
 import './vknextRecomm';

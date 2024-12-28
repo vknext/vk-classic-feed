@@ -136,8 +136,8 @@ const options: Configuration = {
 			optionalChaining: true,
 			templateLiteral: true,
 		},
-		filename: '[name].cvf.js',
-		chunkFilename: '[name].cvf.js',
+		filename: '[name].vcf.js',
+		chunkFilename: '[name].vcf.js',
 	},
 	infrastructureLogging: {
 		level: 'info',
@@ -164,8 +164,8 @@ const options: Configuration = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '[name].cvf.css',
-			chunkFilename: '[name].cvf.css',
+			filename: '[name].vcf.css',
+			chunkFilename: '[name].vcf.css',
 			ignoreOrder: true,
 		}),
 		new CopyWebpackPlugin({
@@ -197,7 +197,7 @@ const options: Configuration = {
 		new ESLintPlugin({}),
 		!IS_DEV &&
 			new ZipPlugin({
-				filename: `cvf${manifest.version}_${IS_FIREFOX ? 'firefox' : 'chrome'}.zip`,
+				filename: `vcf${manifest.version}_${IS_FIREFOX ? 'firefox' : 'chrome'}.zip`,
 				path: path.resolve(`./build`),
 			}),
 		IS_DEV && new webpack.HotModuleReplacementPlugin(),
@@ -222,7 +222,7 @@ const options: Configuration = {
 						options: {
 							sourceMap: IS_DEV,
 							modules: {
-								localIdentName: 'cvf[local]--[hash:base64:5]',
+								localIdentName: 'vcf[local]--[hash:base64:5]',
 								mode: 'local',
 							},
 						},

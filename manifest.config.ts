@@ -16,14 +16,14 @@ const getManifest = ({ isFirefox, isDev }: GetManifestOptions) => {
 		manifest_version: 3,
 		name: '__MSG_ext_name__',
 		version,
-		short_name: 'vknext-cvf',
+		short_name: 'vknext-vcf',
 		description: '__MSG_ext_description__',
 		homepage_url: 'https://vknext.net',
 		default_locale: 'ru',
 		content_scripts: [
 			{
-				js: ['vkcom_content.cvf.js'],
-				css: ['vkcom_injected.cvf.css'],
+				js: ['vkcom_content.vcf.js'],
+				css: ['vkcom_injected.vcf.css'],
 				matches: ['https://vk.com/*', 'https://vk.ru/*'],
 				run_at: 'document_start',
 			},
@@ -54,7 +54,7 @@ const getManifest = ({ isFirefox, isDev }: GetManifestOptions) => {
 		manifest.manifest_version = 2;
 
 		manifest.background = {
-			scripts: ['background.cvf.js'],
+			scripts: ['background.vcf.js'],
 		};
 
 		manifest.browser_specific_settings = {
@@ -89,7 +89,7 @@ const getManifest = ({ isFirefox, isDev }: GetManifestOptions) => {
 		manifest.action = browser_action;
 
 		manifest.background = {
-			service_worker: 'background.cvf.js',
+			service_worker: 'background.vcf.js',
 		};
 	}
 

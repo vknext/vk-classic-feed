@@ -10,7 +10,7 @@ const onLoadFeed = () => {
 	sep.className = 'ui_rmenu_sep';
 
 	const item = document.createElement('a');
-	item.href = 'https://vknext.net/?utm_source=cvf';
+	item.href = 'https://vknext.net/?utm_source=vcf';
 	item.target = '_blank';
 	item.className = 'ui_rmenu_item';
 	item.title = 'Больше возможностей доступно в расширении VK Next. Нажмите, чтобы ознакомиться.';

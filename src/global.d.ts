@@ -1,7 +1,7 @@
 /* eslint-disable no-var */
 
 interface VKNext {
-	cvf_installed?: boolean;
+	vcf_installed?: boolean;
 	webpack: Record<string, any>;
 }
 
@@ -73,6 +73,6 @@ declare global {
 }
 
 export interface ObservedHTMLElement extends HTMLElement {
-	_cvf_mbs?: MutationObserver;
-	_cvf_ibs?: IntersectionObserver;
+	_vcf_mbs?: MutationObserver;
+	_vcf_ibs?: IntersectionObserver;
 }

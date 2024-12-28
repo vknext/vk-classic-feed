@@ -1,4 +1,4 @@
-name: Build Classic VK Feed
+name: Build VK Classic Feed
 
 on: workflow_dispatch
 
@@ -28,5 +28,5 @@ jobs:
             - name: Upload ext to artifact
               uses: actions/upload-artifact@v3
               with:
-                  name: CVF_ext.zip
+                  name: VCF_ext.zip
                   path: build/*.zip

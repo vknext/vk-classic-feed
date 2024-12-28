@@ -1,12 +1,12 @@
 {
 	"ext_name": {
-		"message": "Classic VK Feed — старый постинг и старая лента ВКонтакте"
+		"message": "VK Classic Feed — старый постинг и старая лента ВКонтакте"
 	},
 	"ext_description": {
 		"message": "Возвращает старый интерфейс постинга и старую ленту. Создано командой VK Next."
 	},
 	"popup_title": {
-		"message": "Classic VK Feed"
+		"message": "VK Classic Feed"
 	},
 	"popup_donate": {
 		"message": "Поддержать проект"
