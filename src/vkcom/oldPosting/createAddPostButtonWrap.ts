@@ -13,9 +13,7 @@ const createAddPostButtonWrap = (isSuggestPost: boolean) => {
 
 	const addPostButtonContent = document.createElement('span');
 	addPostButtonContent.className = 'FlatButton__content';
-	addPostButtonContent.textContent = isSuggestPost
-		? window.getLang?.('wall_suggest_group_post') || 'Предложить новость'
-		: window.getLang?.('wall_posting_publish_button_label') || 'Опубликовать';
+	addPostButtonContent.textContent = isSuggestPost ? 'Предложить новость' : 'Опубликовать';
 
 	addPostButtonIn.appendChild(addPostButtonContent);
 	addPostButton.appendChild(addPostButtonIn);
