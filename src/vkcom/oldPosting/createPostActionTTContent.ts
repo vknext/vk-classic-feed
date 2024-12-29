@@ -9,24 +9,24 @@ const createPostActionTTContent = () => {
 	postActionTTContent.append(
 		createFancyElementTT({
 			id: 'no_friends_only',
-			value: '0',
+			value: 0,
 			checked: true,
 			label: 'Видно всем',
-			onclick: `Wall.togglePostVisibilityAccess(event.target, '0', '')`,
+			onclick: `Wall.togglePostVisibilityAccess(event.target, 0, '')`,
 		}),
 		createFancyElementTT({
 			id: 'friends_only',
-			value: '1',
+			value: 1,
 			checked: false,
 			label: 'Видно друзьям',
-			onclick: `Wall.togglePostVisibilityAccess(event.target, '1', '')`,
+			onclick: `Wall.togglePostVisibilityAccess(event.target, 1, '')`,
 		}),
 		createFancyElementTT({
 			id: 'best_friends_only',
-			value: '2',
+			value: 2,
 			checked: false,
-			label: createPostVisibilityBestFriendsOnlyOption(300),
-			onclick: `Wall.togglePostVisibilityAccess(event.target, '2', '')`,
+			label: createPostVisibilityBestFriendsOnlyOption(),
+			onclick: `Wall.togglePostVisibilityAccess(event.target, 2, '')`,
 		})
 	);
 

@@ -1,5 +1,6 @@
 import createEmojiSmileWrap from './createEmojiSmileWrap';
 import createPostField from './createPostField';
+import createPostFieldWarning from './createPostFieldWarning';
 
 const createPostFieldWrap = (isSuggestPost: boolean) => {
 	const postFieldWrap = document.createElement('div');
@@ -12,6 +13,8 @@ const createPostFieldWrap = (isSuggestPost: boolean) => {
 	const postField = createPostField(isSuggestPost);
 
 	postFieldWrap.appendChild(postField);
+
+	postFieldWrap.appendChild(createPostFieldWarning());
 
 	return postFieldWrap;
 };

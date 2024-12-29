@@ -1,6 +1,7 @@
 import type { WallInitProps } from 'src/global';
 import awaitWall from 'src/globalVars/waitWall';
 import DOMContentLoaded from 'src/lib/DOMContentLoaded';
+import Ranges from 'src/lib/Ranges';
 import waitNav from 'src/lib/waitNav';
 import onChangeVKPart from 'src/listeners/onChangeVKPart';
 import createPageBlockSubmitPost from './createPageBlockSubmitPost';
@@ -25,10 +26,12 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallI
 			'<div class="post_action_btn primary_attachments_view" id=\'primary_attachments_view_btn%link_id%\' style=\'display: none;\'>\n  <div class="post_action_btn_layout">\n    <span class="post_action_btn_text" role="button" aria-label="Сетка">Сетка</span>\n    <span class="post_action_image_btn"><svg fill="none" height="8" viewBox="0 0 12 8" width="12" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M2.16 2.3a.75.75 0 0 1 1.05-.14L6 4.3l2.8-2.15a.75.75 0 1 1 .9 1.19l-3.24 2.5c-.27.2-.65.2-.92 0L2.3 3.35a.75.75 0 0 1-.13-1.05z" fill="currentColor" fill-rule="evenodd"/></svg></span>\n    <div class="post_action_tt_content">\n      <div class="FancyElementTT__item radiobtn" role="radio" aria-label=\'Сетка\' data-value=\'grid\'>\n  \n  <div class="FancyElementTT__itemLabel">Сетка</div>\n</div><div class="FancyElementTT__item radiobtn" role="radio" aria-label=\'Карусель\' data-value=\'carousel\'>\n  \n  <div class="FancyElementTT__itemLabel">Карусель</div>\n</div>\n    </div>\n  </div>\n</div>';
 	}
 
+	const oid = wall_oid || ownerId || profileId;
+
 	const submitPostBlock = createPageBlockSubmitPost({
-		isSuggestPost: wall_oid !== (ownerId || profileId),
-		oid: wall_oid || ownerId || profileId,
-		fromOid: wall_oid || ownerId || profileId,
+		isSuggestPost: wall_oid !== (ownerId || profileId) && Ranges.isGroupId(oid),
+		oid,
+		fromOid: oid,
 		ownerHref: ownerHref || public_link || loc || (owner?.id ? `id${owner.id}` : undefined) || profileHref,
 		ownerPhoto: ownerPhoto || owner?.photo || profilePhoto,
 		ownerName,
