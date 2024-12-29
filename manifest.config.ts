@@ -39,11 +39,11 @@ const getManifest = ({ isFirefox, isDev }: GetManifestOptions) => {
 		web_accessible_resources: [
 			{
 				resources: ['*'],
-				matches: ['https://vk.com/*', 'https://vk.ru/*', 'https://m.vk.com/*', 'https://m.vk.ru/*'],
+				matches: ['https://vk.com/*', 'https://vk.ru/*'],
 			},
 		],
 		permissions: [],
-		host_permissions: ['https://vk.com/*', 'https://vk.ru/*', 'https://m.vk.com/*', 'https://m.vk.ru/*'],
+		host_permissions: ['https://vk.com/*', 'https://vk.ru/*'],
 	};
 
 	if (isDev) {
