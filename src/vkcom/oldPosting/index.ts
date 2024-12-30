@@ -1,5 +1,5 @@
 import type { WallInitProps } from 'src/global';
-import awaitWall from 'src/globalVars/waitWall';
+import onAddWall from 'src/globalVars/onAddWall';
 import DOMContentLoaded from 'src/lib/DOMContentLoaded';
 import Ranges from 'src/lib/Ranges';
 import waitNav from 'src/lib/waitNav';
@@ -83,22 +83,19 @@ const showErrorInject = (mainFeed?: HTMLElement | null) => {
 	}
 };
 
-let inited = false;
-const initOldPosting = async () => {
-	if (inited) return;
-	inited = true;
+onChangeVKPart(() => {
+	if (!window.vk?.pe) return;
 
-	onChangeVKPart(() => {
-		if (!window.vk?.pe) return;
+	// форсим редактирование поста через window.Wall.edit
+	delete window.vk.pe.posting_web_react_form;
 
-		// форсим редактирование поста через window.Wall.edit
-		delete window.vk.pe.posting_web_react_form;
+	// возвращаем источник
+	delete window.vk.pe.posting_hide_copyright_button_web;
+});
 
-		// возвращаем источник
-		delete window.vk.pe.posting_hide_copyright_button_web;
-	});
-
-	const wall = await awaitWall();
+onAddWall((wall) => {
+	if (wall._cvf_hooked) return;
+	wall._cvf_hooked = true;
 
 	const init = wall.init;
 
@@ -111,31 +108,29 @@ const initOldPosting = async () => {
 
 		return init.apply(wall, rest);
 	};
+});
 
-	DOMContentLoaded(async () => {
-		const nav = await waitNav();
+DOMContentLoaded(async () => {
+	const nav = await waitNav();
 
-		if (document.getElementById('submit_post_box')) return;
-		if (document.getElementsByClassName('PostingReactBlock__root').length === 0) return;
+	if (document.getElementById('submit_post_box')) return;
+	if (document.getElementsByClassName('PostingReactBlock__root').length === 0) return;
 
-		const mainFeed = document.getElementById('main_feed');
+	const mainFeed = document.getElementById('main_feed');
 
-		try {
-			showErrorInject(mainFeed);
-		} catch (e) {
-			console.error(e);
-		}
+	try {
+		showErrorInject(mainFeed);
+	} catch (e) {
+		console.error(e);
+	}
 
-		if (mainFeed) {
-			return;
-		}
+	if (mainFeed) {
+		return;
+	}
 
-		nav.go(nav.objLoc, null, {
-			noback: true,
-			replace: true,
-			preventScroll: true,
-		});
+	nav.go(nav.objLoc, null, {
+		noback: true,
+		replace: true,
+		preventScroll: true,
 	});
-};
-
-initOldPosting().catch(console.error);
+});

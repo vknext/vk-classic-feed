@@ -52,19 +52,7 @@ const onAddPost = (post: HTMLElement) => {
 	}
 };
 
-let inited = false;
-const initOldPostDesign = () => {
-	if (inited) return;
-	inited = true;
+tqsHook().catch(console.error);
 
-	tqsHook().catch(console.error);
-
-	onAddWallPost(onAddPost);
-	onAddModalPost(onAddPost);
-};
-
-try {
-	initOldPostDesign();
-} catch (e) {
-	console.error(e);
-}
+onAddWallPost(onAddPost);
+onAddModalPost(onAddPost);
