@@ -56,7 +56,7 @@ const onAddPost = (el: ObservedHTMLElement) => {
 				}
 			}
 		},
-		{ threshold: 0, rootMargin: '100% 0% 100% 0%' }
+		{ threshold: 0, rootMargin: '50px 0% 50px 0%' }
 	);
 
 	el._vcf_ibs.observe(el);
