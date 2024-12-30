@@ -3,26 +3,11 @@ import onAddWallPost from 'src/interactions/onAddWallPost';
 import getReactAttrs from 'src/lib/getReactAttrs';
 import createLikeViewsElement from './createLikeViewsElement';
 import formatPostDate from './formatPostDate';
-import * as styles from './styles/index.module.scss';
 import tqsHook from './tqsHook';
 
+import './index.scss';
+
 const onAddPost = (post: HTMLElement) => {
-	if (!post.querySelector('.PostCopyQuote--redesignV3')) {
-		try {
-			const postText = post.querySelector('[class*="PostText__root"]')?.parentElement;
-
-			if (postText) {
-				postText.style.padding = '0px 20px';
-
-				const postContent = post.querySelector('[class*="PostContentContainer__contentContainer"]')!;
-
-				postContent.prepend(postText);
-			}
-		} catch (error) {
-			console.error(error);
-		}
-	}
-
 	const postHeaderInfo = post.querySelector<HTMLElement>('.PostHeaderInfo');
 	if (!postHeaderInfo) return;
 
@@ -76,8 +61,6 @@ const initOldPostDesign = () => {
 
 	onAddWallPost(onAddPost);
 	onAddModalPost(onAddPost);
-
-	document.documentElement.classList.add(styles.oldPostDesign);
 };
 
 try {
