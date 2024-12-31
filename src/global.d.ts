@@ -39,6 +39,7 @@ export interface Cur {
 }
 
 export interface VK {
+	id: number;
 	pe: Record<string, any>;
 }
 
@@ -59,6 +60,7 @@ export interface WallInitProps {
 		profileData: [profileId: number, photo: string, href: string, name: string];
 		ownerData: [ownerId: number, photo: string, href: string, name: string];
 	};
+	only_official?: boolean;
 }
 
 export interface Wall {

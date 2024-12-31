@@ -1,4 +1,16 @@
-const createPostField = (isSuggestPost: boolean) => {
+const createPostField = (isSuggestPost: boolean, onlyOfficial?: boolean) => {
+	const getLabel = () => {
+		if (!onlyOfficial) {
+			return 'Напишите что-нибудь...';
+		}
+
+		if (isSuggestPost) {
+			return 'Предложите новость';
+		}
+
+		return 'Что у вас нового?';
+	};
+
 	const postField = document.createElement('div');
 	postField.id = 'post_field';
 	postField.className = 'submit_post_field dark';
@@ -7,7 +19,7 @@ const createPostField = (isSuggestPost: boolean) => {
 	postField.setAttribute('onkeydown', 'onCtrlEnter(event, wall.sendPost)');
 	postField.setAttribute('onfocus', 'wall && wall.showEditPost()');
 
-	const label = isSuggestPost ? 'Предложите новость' : 'Что у вас нового?';
+	const label = getLabel();
 
 	postField.setAttribute('placeholder', label);
 	postField.setAttribute('contenteditable', 'true');

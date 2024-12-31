@@ -6,7 +6,7 @@ import waitNav from 'src/lib/waitNav';
 import onChangeVKPart from 'src/listeners/onChangeVKPart';
 import createPageBlockSubmitPost from './createPageBlockSubmitPost';
 
-const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallInitProps) => {
+const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl, only_official }: WallInitProps) => {
 	const newPageBlockSubmitPost = document.querySelector<HTMLElement>('#page_block_submit_post.new_posting');
 	const gtopPageBlockSubmitPost = document.querySelector<HTMLElement>(
 		'#page_block_submit_post:has(> .gtop_complex_message)'
@@ -32,6 +32,7 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallI
 	const oid = wall_oid || ownerId || profileId;
 
 	const submitPostBlock = createPageBlockSubmitPost({
+		onlyOfficial: !!only_official,
 		isSuggestPost: wall_oid !== (ownerId || profileId) && Ranges.isGroupId(oid),
 		oid,
 		fromOid: oid,
