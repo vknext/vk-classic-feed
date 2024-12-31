@@ -1,7 +1,7 @@
 import createPostCopyrightButton from './createPostCopyrightButton';
 import createPostSourceButton from './createPostSourceButton';
 
-const createPostSettingsItems = (isGroup: boolean) => {
+const createPostSettingsItems = (isGroup: boolean, onlyOfficial?: boolean) => {
 	const postSettingsItems = document.createElement('div');
 	postSettingsItems.className = '_post_settings_items';
 
@@ -27,6 +27,19 @@ const createPostSettingsItems = (isGroup: boolean) => {
 	muteNotifications.setAttribute('onclick', 'checkbox(this)');
 	muteNotifications.textContent = 'Не отправлять уведомления';
 	postSettingsItems.appendChild(muteNotifications);
+
+	if (!onlyOfficial) {
+		const official = document.createElement('div');
+		official.className = 'checkbox on';
+		official.id = 'official';
+		official.setAttribute('onclick', 'Wall && Wall.checkAsGroup(this)');
+		official.setAttribute('role', 'checkbox');
+		official.setAttribute('aria-checked', 'true');
+		official.setAttribute('tabindex', '0');
+		official.setAttribute('aria-label', 'от имени сообщества');
+		official.textContent = window.getLang?.('global_on_behalf_group') || 'От имени сообщества';
+		postSettingsItems.prepend(official);
+	}
 
 	postSettingsItems.append(createPostCopyrightButton(), createPostSourceButton());
 

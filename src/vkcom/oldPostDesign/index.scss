@@ -141,13 +141,9 @@
 		margin: 16px 0 0 !important;
 	}
 
-	.post_info .replies {
+	.post:not(.postponed) .post_info .replies {
 		padding-bottom: 0 !important;
 	}
-}
-
-.feed_wall--no-islands .post_info .replies {
-	padding-bottom: 0 !important;
 }
 
 /* остров для историй */
@@ -163,19 +159,20 @@
 	display: block !important;
 }
 
-.PostDateBlock__root:empty {
+.PostDateBlock__root:empty,
+.PostDateBlock__root:has(.vkuiLink:empty) {
 	display: none !important;
 }
 
 .PostHeader--hasSubtitle {
-	display: block;
+	display: block !important;
 
-	.PostDateBlock__root:not(:empty),
+	.PostDateBlock__root:not(:empty):not(:has(.vkuiLink:empty)),
 	.PostHeaderSubtitle {
 		display: inline-flex !important;
 	}
 
-	.PostHeaderSubtitle + .PostDateBlock__root:not(:empty)::before {
+	.PostHeaderSubtitle + .PostDateBlock__root:not(:empty):not(:has(.vkuiLink:empty))::before {
 		content: '·';
 		color: var(--vkui--color_text_secondary);
 		margin: 0 3px;
@@ -189,4 +186,46 @@
 .Post--redesignFooterV3 #wpe_cont {
 	padding: 0px 20px;
 	margin-top: 20px;
+}
+
+/* перенос текста над фото */
+[class*='PostContentContainer__contentContainer'] {
+	display: flex;
+	flex-direction: column;
+
+	& > .vkuiDiv:has([class*='PostText__root']) {
+		display: contents !important;
+
+		& > .vkuiDiv:has([class*='PostText__root']) {
+			order: -1 !important;
+		}
+
+		// contents убирает падинги, нужно их вернуть
+		& > .vkuiDiv[style*='padding: 0px 12px'] {
+			padding: 0px 20px !important;
+		}
+	}
+}
+
+/* фикс отступа у блока "возможно, вы знакомы" */
+.FeedBlockWrap.FeedBlockWrap__marginM:last-child {
+	margin-bottom: 0 !important;
+}
+
+.PostContentContainer__root > .PostContentDumbSkeleton {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+[class*='SecondaryAttachment__progressBar'] {
+	[class*='AudioPlaybackProgressBar__heightByLine'][class*='AudioPlaybackProgressBar__sizeM'],
+	[class*='Slider__heightByLine'][class*='Slider__sliderSizeM'] {
+		height: 4px;
+	}
+
+	[class*='Slider__sliderSizeM']::before,
+	[class*='Slider__sliderSizeM'] [class*='Slider__fill'] {
+		top: 9px;
+		height: 4px;
+	}
 }
