@@ -8,11 +8,14 @@ import createPageBlockSubmitPost from './createPageBlockSubmitPost';
 
 const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallInitProps) => {
 	const newPageBlockSubmitPost = document.querySelector<HTMLElement>('#page_block_submit_post.new_posting');
+	const gtopPageBlockSubmitPost = document.querySelector<HTMLElement>(
+		'#page_block_submit_post:has(> .gtop_complex_message)'
+	);
 	const mainFeed = document.getElementById('main_feed');
 
 	if (document.getElementsByClassName('submit_post_field').length) return;
 
-	if (!mainFeed && !newPageBlockSubmitPost) return;
+	if (!mainFeed && !newPageBlockSubmitPost && !gtopPageBlockSubmitPost) return;
 
 	const [ownerId, ownerPhoto, ownerHref, ownerName] = wall_tpl?.ownerData || [];
 	const [profileId, profilePhoto, profileHref] = wall_tpl?.profileData || [];
@@ -47,6 +50,16 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl }: WallI
 		mainFeed.parentElement!.prepend(submitPostBlock);
 
 		const postingBlock = document.querySelector<HTMLElement>('.PostingReactBlock__root');
+
+		if (postingBlock) {
+			postingBlock.remove();
+		}
+	}
+
+	if (gtopPageBlockSubmitPost) {
+		gtopPageBlockSubmitPost.insertAdjacentElement('afterend', submitPostBlock);
+
+		const postingBlock = gtopPageBlockSubmitPost.querySelector<HTMLElement>('.PostingReactBlock__root');
 
 		if (postingBlock) {
 			postingBlock.remove();
