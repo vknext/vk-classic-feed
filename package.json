@@ -12,7 +12,7 @@
 	"license": "MIT",
 	"description": "Расширение, которое возвращает старый интерфейс постинга и старую ленту ВКонтакте. Создано командой VK Next.",
 	"devDependencies": {
-		"@types/chrome": "^0.0.270",
+		"@types/chrome": "^0.0.289",
 		"@types/node": "^22.4.0",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
 		"@typescript-eslint/parser": "^6.21.0",
