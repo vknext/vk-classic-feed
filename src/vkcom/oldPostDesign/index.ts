@@ -30,8 +30,9 @@ const onAddPost = (post: HTMLElement) => {
 		if (postBottomActionLikeBtns.getElementsByClassName('like_views').length) return;
 
 		const { container } = getReactAttrs(postDateBlock);
+		const { props: childProps } = getReactAttrs(postDateBlock.firstChild as HTMLElement);
 
-		const props = container?.memoizedState?.element?.props;
+		const props = container?.memoizedState?.element?.props || childProps?.children?.props;
 		const viewsCount = props?.viewsCount;
 		const date = props?.date;
 
