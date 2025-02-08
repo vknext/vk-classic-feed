@@ -13,7 +13,7 @@ const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl, only_of
 	);
 	const mainFeed = document.getElementById('main_feed');
 
-	if (document.getElementsByClassName('submit_post_field').length) return;
+	if (document.getElementById('post_field')) return;
 
 	if (!mainFeed && !newPageBlockSubmitPost && !gtopPageBlockSubmitPost) return;
 
