@@ -183,7 +183,7 @@
 	}
 }
 
-.PostContentContainer__root .vkuiDiv:has(.vkuiDiv:first-child:empty) {
+.PostContentContainer__root [class^='vkuiDiv']:has([class^='vkuiDiv']:first-child:empty) {
 	display: none;
 }
 
@@ -197,10 +197,10 @@
 	display: flex;
 	flex-direction: column;
 
-	& > .vkuiDiv:has([class*='PostText__root']) {
+	& > [class^='vkuiDiv']:has([class*='PostText__root']) {
 		display: contents !important;
 
-		& > .vkuiDiv:has([class*='PostText__root']) {
+		& > [class^='vkuiDiv']:has([class*='PostText__root']) {
 			order: -1 !important;
 		}
 
@@ -209,7 +209,7 @@
 		}
 
 		// contents убирает падинги, нужно их вернуть
-		& > .vkuiDiv[style*='padding: 0px 12px'] {
+		& > [class^='vkuiDiv'][style*='padding: 0px 12px'] {
 			padding: 12px 20px 0px !important;
 		}
 	}
