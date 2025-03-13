@@ -164,19 +164,19 @@
 }
 
 .PostDateBlock__root:empty,
-.PostDateBlock__root:has(.vkuiLink:empty) {
+.PostDateBlock__root:has([class*='vkuiLink']:empty) {
 	display: none !important;
 }
 
 .PostHeader--hasSubtitle {
 	display: block !important;
 
-	.PostDateBlock__root:not(:empty):not(:has(.vkuiLink:empty)),
+	.PostDateBlock__root:not(:empty):not(:has([class*='vkuiLink']:empty)),
 	.PostHeaderSubtitle {
 		display: inline-flex !important;
 	}
 
-	.PostHeaderSubtitle + .PostDateBlock__root:not(:empty):not(:has(.vkuiLink:empty))::before {
+	.PostHeaderSubtitle + .PostDateBlock__root:not(:empty):not(:has([class*='vkuiLink']:empty))::before {
 		content: '·';
 		color: var(--vkui--color_text_secondary);
 		margin: 0 3px;
@@ -204,8 +204,11 @@
 			order: -1 !important;
 		}
 
-		&[style*='padding: 0px 8px'] > .vkuiSpacing {
-			display: none !important;
+		&[style*='padding: 0px 8px'] {
+			& > [class*='Spacing__root'],
+			& > .vkuiSpacing {
+				display: none !important;
+			}
 		}
 
 		// contents убирает падинги, нужно их вернуть
