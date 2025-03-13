@@ -37,7 +37,7 @@ const onAddPost = (post: HTMLElement) => {
 		const date = props?.date;
 
 		if (date) {
-			const link = postDateBlock.querySelector<HTMLAnchorElement>('a,.vkuiLink');
+			const link = postDateBlock.querySelector<HTMLAnchorElement>(`a,.vkuiLink,[class*='vkuiLink']`);
 			if (link) {
 				link.innerText = formatPostDate(date, true);
 			}
