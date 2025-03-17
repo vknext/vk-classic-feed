@@ -814,10 +814,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/chrome@^0.0.270":
-  version "0.0.270"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.270.tgz#575f47107652ef75d4841ec8ffa018137c8f51e7"
-  integrity sha512-ADvkowV7YnJfycZZxL2brluZ6STGW+9oKG37B422UePf2PCXuFA/XdERI0T18wtuWPx0tmFeZqq6MOXVk1IC+Q==
+"@types/chrome@^0.0.309":
+  version "0.0.309"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.309.tgz#f9c33cec6238bae63e4a5b5e2acd8a8d54ff360a"
+  integrity sha512-ZFADzcp8b+roUrux68U8pti4cmNOLJXWkShk8lfxj9SBcjYqpJt7NypBprSJUJDJVakGZgd2Tt00QePIGh7oPA==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
