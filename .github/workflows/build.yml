@@ -8,7 +8,7 @@ jobs:
             FIREFOX_ID: ${{ secrets.FIREFOX_ID }}
             CHROME_KEY: ${{ secrets.CHROME_KEY }}
 
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v4
