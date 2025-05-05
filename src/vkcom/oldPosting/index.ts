@@ -1,5 +1,5 @@
+import { onAddWall } from '@vknext/shared/vkcom/globalVars/onAddWall';
 import type { WallInitProps } from 'src/global';
-import onAddWall from 'src/globalVars/onAddWall';
 import DOMContentLoaded from 'src/lib/DOMContentLoaded';
 import Ranges from 'src/lib/Ranges';
 import waitNav from 'src/lib/waitNav';
