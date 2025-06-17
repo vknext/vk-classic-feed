@@ -1,6 +1,6 @@
 {
 	"name": "vk-classic-feed",
-	"version": "1.2.7",
+	"version": "1.2.8",
 	"type": "module",
 	"scripts": {
 		"dev": "cross-env NODE_OPTIONS=\"--import=tsx/esm\" webpack serve --config webpack.config.ts --env --dev",
