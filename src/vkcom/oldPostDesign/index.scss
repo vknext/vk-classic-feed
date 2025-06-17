@@ -200,20 +200,18 @@
 	& > [class^='vkuiDiv']:has([class*='PostText__root']) {
 		display: contents !important;
 
+		& > [class*='Spacing__root']:first-child {
+			order: -2;
+		}
+
+		& > .wall_post_text_wrapper,
 		& > [class^='vkuiDiv']:has([class*='PostText__root']) {
-			order: -1 !important;
-		}
+			padding: 0 20px !important;
+			order: -1;
 
-		&[style*='padding: 0px 8px'] {
-			& > [class*='Spacing__root'],
-			& > .vkuiSpacing {
-				display: none !important;
+			& + [class^='vkuiDiv'][style*='padding: 0px 12px'] {
+				padding: 0 20px !important;
 			}
-		}
-
-		// contents убирает падинги, нужно их вернуть
-		& > [class^='vkuiDiv'][style*='padding: 0px 12px'] {
-			padding: 12px 20px 0px !important;
 		}
 	}
 }
