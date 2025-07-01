@@ -65,6 +65,7 @@ export interface WallInitProps {
 
 export interface Wall {
 	init: (props: WallInitProps) => void;
+	editPost: (postElement: HTMLElement | undefined, postId: string) => void;
 	votingUpdateFull: (_: string, e: string) => void;
 	initReplyEditable: (replyBox: HTMLElement, replyField: HTMLElement, postId: string) => void;
 	showEditReply: (

@@ -1,5 +1,6 @@
 import { onAddWall } from '@vknext/shared/vkcom/globalVars/onAddWall';
 import type { WallInitProps } from 'src/global';
+import cancelEvent from 'src/lib/cancelEvent';
 import DOMContentLoaded from 'src/lib/DOMContentLoaded';
 import Ranges from 'src/lib/Ranges';
 import waitNav from 'src/lib/waitNav';
@@ -148,3 +149,18 @@ DOMContentLoaded(async () => {
 		preventScroll: true,
 	});
 });
+
+document.addEventListener(
+	'click',
+	(event) => {
+		if (!(event.target instanceof HTMLElement) || !window.Wall.editPost) return;
+
+		const target = event.target.closest<HTMLElement>('[data-task-click="PostingReactBlock/editPost"]');
+		if (!target) return;
+
+		cancelEvent(event);
+
+		window.Wall.editPost(target, target.dataset.postRaw!);
+	},
+	true
+);
