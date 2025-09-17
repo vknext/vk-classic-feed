@@ -1649,10 +1649,10 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.2.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.3.0.tgz#67c20a7ebef70e7f3970a01f90fa210cb6860385"
-  integrity sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==
+chalk@^5.3.0:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.4.1.tgz#1b48bf0963ec158dce2aacf69c093ae2dd2092d8"
+  integrity sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.6.0:
   version "3.6.0"
@@ -1686,12 +1686,12 @@ clean-css@^5.2.2:
   dependencies:
     source-map "~0.6.0"
 
-clear-folder@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/clear-folder/-/clear-folder-5.0.0.tgz#23402e8339c24066fadb1724a35c704ee84f3a57"
-  integrity sha512-edCTUY6i2N18TuwG9wOT/A3unrnVN1vacVihOfk867CG3v4HwFgVUw0ol1DdjiJ0RiTgINjQlXNDTgqDeDzwSA==
+clear-folder@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/clear-folder/-/clear-folder-5.1.0.tgz#872c24c33baddbe9ecac5213a7ad84ac845a828a"
+  integrity sha512-88wo2ag4mJC34Q7vKI4v09m01xWjB5tLmimuCST1ggw0MRaQslG5eKFnX9FG96jQmxvZim/P2VDHVAuvvZsYRA==
   dependencies:
-    chalk "^5.2.0"
+    chalk "^5.3.0"
 
 clone-deep@^4.0.1:
   version "4.0.1"
