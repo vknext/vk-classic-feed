@@ -1,3 +1,4 @@
+import { onDocumentComplete } from '@vknext/shared/utils/onDocumentComplete';
 import type { ObservedHTMLElement } from 'src/global';
 import delay from 'src/lib/delay';
 import DOMContentLoaded from 'src/lib/DOMContentLoaded';
@@ -11,9 +12,13 @@ import InteractionListener from './utils/InteractionListener';
 type CallbackFunc = (node: HTMLElement) => void;
 
 const POST_SELECTOR = ['.Post--redesign', '.post', '._post:not(.reply)', '.Post', '.FeedBlockWrap'].join(',');
-const WALL_MODULE_SELECTOR = ['.wall_module', '#public_wall'].join(',');
+const WALL_MODULE_SELECTOR = [
+	'.wall_module',
+	'#public_wall',
+	`div[data-testid="feed_main_container"] > .vkuiInternalGroup--mode-card`,
+].join(',');
 const PAGE_WALL_POSTS_SELECTOR = ['#page_wall_posts', '.page_wall_posts', '#page_donut_posts'].join(',');
-const FEED_ROWS_SELECTOR = ['#feed_rows', '._feed_rows'].join(',');
+const FEED_ROWS_SELECTOR = ['#feed_rows', '._feed_rows', 'div[role="feed"]'].join(',');
 
 const interaction = new InteractionListener<CallbackFunc>();
 
@@ -56,7 +61,7 @@ const onAddPost = (el: ObservedHTMLElement) => {
 				}
 			}
 		},
-		{ threshold: 0, rootMargin: '50px 0% 50px 0%' }
+		{ threshold: 0, rootMargin: '800px 0% 800px 0%' }
 	);
 
 	el._vcf_ibs.observe(el);
@@ -77,7 +82,7 @@ const initObserver = async () => {
 		timeOut = null;
 	}
 
-	if (document.getElementById('FeedPageSkeleton')) {
+	if (document.querySelector('#FeedPageSkeleton,[class*="PostSkeleton__root"]')) {
 		timeOut = setTimeout(() => {
 			timeOut = null;
 			initObserver();
@@ -156,6 +161,7 @@ const initListener = async (): Promise<void> => {
 
 	nav.subscribeOnModuleEvaluated(async () => {
 		await waitRAF();
+		await waitRIC();
 
 		const curModule = cur.module;
 
@@ -167,7 +173,7 @@ const initListener = async (): Promise<void> => {
 	});
 
 	if (cur?.module) {
-		await new Promise<void>((resolve) => DOMContentLoaded(resolve));
+		await new Promise<void>((resolve) => onDocumentComplete(resolve));
 	}
 
 	if (validModules.includes(cur.module) || cur.module === undefined) {

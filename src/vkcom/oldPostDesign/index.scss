@@ -234,3 +234,56 @@
 		height: 4px;
 	}
 }
+
+div[data-testid='feed_main_container'] {
+	& > .vkuiInternalGroup--mode-card {
+		background: none !important;
+		border-radius: unset !important;
+		padding: 0 !important;
+
+		&::before {
+			content: unset !important;
+		}
+
+		& > div[role='feed'] > article {
+			background: var(--vkui--color_background_content);
+			border-radius: var(--vkui--size_border_radius_paper--regular);
+
+			&::before {
+				border-radius: inherit;
+				box-shadow: inset 0 0 0 var(--vkui--size_border--regular) var(--vkui--color_separator_primary);
+				content: '';
+				pointer-events: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
+
+	div[data-testid='post-content-container'] > div > .vkuiRootComponent__host {
+		display: flex;
+		flex-direction: column;
+		padding-top: 0 !important;
+
+		& > [class^='vkuiDiv']:has([class*='PostTextV2__root']) {
+			display: contents !important;
+
+			& > [class*='PostTextV2__root'] {
+				padding: 4px 20px !important;
+				order: -1;
+			}
+
+			& > [class*='SecondaryAttachmentList__root'] {
+				padding: 0 20px !important;
+			}
+		}
+	}
+
+	div[data-testid='post'] {
+		padding-top: 8px !important;
+		padding-bottom: 8px !important;
+	}
+}
