@@ -111,6 +111,8 @@ declare global {
 	var langDate: (timestamp: number, text: string, mode?: string | number, months?: string | string[]) => string;
 	var langNumeric: (n: number, s: string | string[]) => string;
 
+	var __addMediaIndex: number | undefined;
+
 	namespace NodeJS {
 		interface ProcessEnv {
 			NODE_ENV: 'development' | 'production';

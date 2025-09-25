@@ -6,6 +6,8 @@ import Ranges from 'src/lib/Ranges';
 import waitNav from 'src/lib/waitNav';
 import onChangeVKPart from 'src/listeners/onChangeVKPart';
 import createPageBlockSubmitPost from './createPageBlockSubmitPost';
+import { removeAllButtonsExceptLast } from './removeAllButtonsExceptLast';
+import { removeDoublingButtons } from './removeDoublingButtons';
 
 const onWallInit = async ({ wall_oid, public_link, loc, owner, wall_tpl, only_official }: WallInitProps) => {
 	const newPageBlockSubmitPost = document.querySelector<HTMLElement>('#page_block_submit_post.new_posting');
@@ -108,6 +110,14 @@ onChangeVKPart(() => {
 	delete window.vk.pe.posting_hide_copyright_button_web;
 });
 
+const onInited = () => {
+	const lastAddMediaId = window.__addMediaIndex ?? 1;
+
+	removeDoublingButtons('post_postpone_btn', lastAddMediaId);
+	removeAllButtonsExceptLast('post_donut_duration_btn');
+	removeAllButtonsExceptLast('donut_visibility_btn');
+};
+
 onAddWall((wall) => {
 	if (wall._cvf_hooked) return;
 	wall._cvf_hooked = true;
@@ -121,7 +131,16 @@ onAddWall((wall) => {
 			console.error(e);
 		}
 
-		return init.apply(wall, rest);
+		try {
+			const result = await Reflect.apply(init, wall, rest);
+
+			return result;
+			// eslint-disable-next-line no-useless-catch
+		} catch (e) {
+			throw e;
+		} finally {
+			onInited();
+		}
 	};
 });
 
